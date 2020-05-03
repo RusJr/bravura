@@ -21,6 +21,7 @@ public class AudioTrackAdapter extends RecyclerView.Adapter<AudioTrackAdapter.Vi
 
     private Context context;
     private List<AudioTrack> trackList;
+    private View.OnClickListener mOnItemClickListener;
 
     public AudioTrackAdapter (Context context, List<AudioTrack> trackList) {
         this.context = context;
@@ -57,6 +58,11 @@ public class AudioTrackAdapter extends RecyclerView.Adapter<AudioTrackAdapter.Vi
         return this.trackList.size();
     }
 
+    //TODO: Step 2 of 4: Assign itemClickListener to your local View.OnClickListener variable
+    public void setOnItemClickListener(View.OnClickListener itemClickListener) {
+        mOnItemClickListener = itemClickListener;
+    }
+
     class ViewHolder extends RecyclerView.ViewHolder {
         private TextView iArtist;
         private TextView iSong;
@@ -66,6 +72,13 @@ public class AudioTrackAdapter extends RecyclerView.Adapter<AudioTrackAdapter.Vi
             super(itemView);
             this.iArtist = itemView.findViewById(R.id.artist);
             this.iSong = itemView.findViewById(R.id.song);
+
+            //TODO: Step 3 of 4: setTag() as current view holder along with
+            // setOnClickListener() as your local View.OnClickListener variable.
+            // You can set the same mOnItemClickListener on multiple views if required
+            // and later differentiate those clicks using view's id.
+            itemView.setTag(this);
+            itemView.setOnClickListener(mOnItemClickListener);
         }
     }
 }

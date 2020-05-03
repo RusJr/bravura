@@ -10,6 +10,10 @@ public class AudioTrack {
     @SerializedName("tit_art")
     public String title;
 
-    public int duration;
+    public String duration;
+
+    public String url;
+
+    public String extra;
 
 }
